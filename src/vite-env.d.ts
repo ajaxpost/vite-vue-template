@@ -8,3 +8,13 @@ declare module '*.vue' {
   const componentOptions: ComponentOptions;
   export default componentOptions;
 }
+
+// 对自定义的环境变量新增类型
+interface ImportMetaEnv {
+  readonly VITE_ABC: string;
+  // 更多环境变量...
+}
+
+interface ImportMeta {
+  readonly env: ImportMetaEnv;
+}
