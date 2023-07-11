@@ -59,14 +59,14 @@ export default defineConfig(({ mode }) => {
       rollupOptions: {
         // vite打包是通过rollup来打包的
         output: {
-          entryFileNames: '[name].js', // 指定 入口文件 的名称
-          assetFileNames: 'static/[ext]/[name]-[hash].[ext]', // 指定 静态资源的存放位置
+          entryFileNames: '[name].js', // 指定 入口文件输出的存放位置
+          assetFileNames: 'static/[ext]/[name]-[hash].[ext]', // 指定 静态资源输出的存放位置
           manualChunks(id) {
             if (id.includes('node_modules')) {
               return id.toString().split('node_modules/')[1].split('/')[0].toString();
             }
           },
-          // 指定 chunks的存放位置
+          // 指定 chunks输出的存放位置
           chunkFileNames: (chunkInfo) => {
             const facadeModuleId = chunkInfo.facadeModuleId ? chunkInfo.facadeModuleId.split('/') : [];
             const fileName = facadeModuleId[facadeModuleId.length - 2] || '[name]';
